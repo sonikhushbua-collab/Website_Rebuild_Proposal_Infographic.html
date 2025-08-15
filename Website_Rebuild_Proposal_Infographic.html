@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Rebuild Proposal for London Imperial Immigration Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* A light grey background */
+        }
+        .brand-text { color: #355070; }
+        .accent-text { color: #6d597a; }
+        .highlight-bg { background-color: #b56576; }
+        .highlight-text { color: #e56b6f; }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+            border-left: 2px solid #6d597a;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.7rem;
+            top: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 9999px;
+            background-color: #6d597a;
+            border: 4px solid #f3f4f6;
+        }
+        .btn-primary {
+            background-color: #e56b6f;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #b56576;
+        }
+    </style>
+    <!-- 
+        Narrative Plan: 
+        1.  Hook: Start with the core problem - the outdated website is costing business.
+        2.  Problem Analysis: Visually show the "before" state - slow, not mobile-friendly, poor design.
+        3.  The Solution: Present the new website as the answer, highlighting key benefits.
+        4.  Feature Breakdown: Detail what the new website will include (new pages, etc.).
+        5.  The Process: Visualize the project timeline to build confidence and manage expectations.
+        6.  Projected Impact: Use charts to show potential growth in traffic and leads.
+        7.  The Offer: A clear, concise call to action with the final price and special offer.
+
+        Chart Selection:
+        - Mobile vs. Desktop Users: A doughnut chart to *compare* the current poor mobile performance with the industry standard. (Chart.js)
+        - Lead Generation: A bar chart to *compare* current vs. projected performance. (Chart.js)
+        - Traffic Sources: A pie chart to show the *composition* of future traffic. (Chart.js)
+        - Process Flow: A custom HTML/CSS timeline to *organize* the project steps.
+        - NO SVG or Mermaid.js used. All visuals are CSS, HTML, or Canvas-based via Chart.js.
+        - Color Palette: "Vintage
+    -->
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold brand-text mb-2">Is Your Website Working for You?</h1>
+            <p class="text-lg text-gray-600">A proposal to rebuild liisservices.co.uk for the modern web.</p>
+        </header>
+
+        <!-- Section 1: The Problem -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 brand-text">The Current Challenge: An Outdated Digital Presence</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="stat-card">
+                    <div class="text-5xl mb-4">👎</div>
+                    <h3 class="text-xl font-semibold mb-2 accent-text">Outdated First Impression</h3>
+                    <p class="text-gray-600">The current design from the early 2000s doesn't reflect the professionalism of your services, potentially deterring clients who expect a modern, trustworthy brand.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="text-5xl mb-4">📱 ➡️ 🚶‍♂️</div>
+                    <h3 class="text-xl font-semibold mb-2 accent-text">Not Mobile-Friendly</h3>
+                    <p class="text-gray-600">Over 60% of web traffic is mobile. The current site is difficult to use on a phone, causing most mobile visitors to leave immediately.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="text-5xl mb-4">📉</div>
+                    <h3 class="text-xl font-semibold mb-2 accent-text">Invisible to Google</h3>
+                    <p class="text-gray-600">Without proper structure and SEO, your site is nearly invisible to search engines, missing out on thousands of potential clients actively looking for your services.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Solution -->
+        <section class="mb-16 bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-center mb-8 brand-text">The Solution: A Modern, Client-Focused Website</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-700 mb-12">We propose a complete rebuild focused on generating leads, building trust, and providing a seamless experience for your visitors. This isn't just a facelift; it's a strategic upgrade to your most important marketing asset.</p>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="chart-container">
+                    <canvas id="trafficSourceChart"></canvas>
+                </div>
+                <div class="text-left">
+                    <h3 class="text-2xl font-bold mb-4 accent-text">Capture More Clients</h3>
+                    <p class="text-gray-600 mb-4">A new, SEO-optimized website will attract visitors from various sources. We'll shift from relying on word-of-mouth to actively capturing clients searching on Google, which is where most people look for immigration services.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong class="font-semibold">Professional Design:</strong> Build immediate trust and credibility.</li>
+                        <li><strong class="font-semibold">Mobile-First:</strong> A perfect experience on any device.</li>
+                        <li><strong class="font-semibold">SEO-Ready:</strong> Be found by clients looking for you.</li>
+                        <li><strong class="font-semibold">Clear & Engaging:</strong> Guide users to contact you effortlessly.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Project Timeline -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 brand-text">Our 6-8 Week Plan for Your Success</h2>
+            <div class="relative">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="text-xl font-semibold accent-text">Week 1: Discovery & Planning</h4>
+                    <p class="text-gray-600">We'll start with a meeting to understand your goals and plan the website's structure and content flow.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="text-xl font-semibold accent-text">Weeks 2-3: Design & Branding</h4>
+                    <p class="text-gray-600">I will design your new logo and create visual mockups of the new website for your approval.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="text-xl font-semibold accent-text">Weeks 3-5: Content Creation</h4>
+                    <p class="text-gray-600">I will write professional, engaging, and SEO-friendly content for every page of the website.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="text-xl font-semibold accent-text">Weeks 4-7: Development</h4>
+                    <p class="text-gray-600">The approved designs and content are transformed into a fully functional, mobile-friendly website using a modified Bootstrap template.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="text-xl font-semibold accent-text">Week 8: Testing & Launch</h4>
+                    <p class="text-gray-600">We'll thoroughly test everything before launching your new, powerful website to the world.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: What You'll Get -->
+        <section class="mb-16 bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-center mb-8 brand-text">Included Features & Pages</h2>
+             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                <div class="p-4"><span class="text-2xl mr-2">🏠</span><span class="font-semibold">Home Page</span></div>
+                <div class="p-4"><span class="text-2xl mr-2">🏢</span><span class="font-semibold">About Us / Our Team</span></div>
+                <div class="p-4"><span class="text-2xl mr-2">-</span><span class="font-semibold">Individual Service Pages</span></div>
+                <div class="p-4"><span class="text-2xl mr-2">🌟</span><span class="font-semibold">Success Stories / Testimonials</span></div>
+                <div class="p-4"><span class="text-2xl mr-2">📞</span><span class="font-semibold">Contact Us Page</span></div>
+                <div class="p-4"><span class="text-2xl mr-2">✍️</span><span class="font-semibold">Blog Setup</span></div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Investment -->
+        <section class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-10 rounded-lg text-center shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">A Special Offer to Build Our Partnership</h2>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">
+                For the complete project — including a new logo, all content writing, and a fully functional website — I am offering a special introductory rate.
+            </p>
+            <div class="text-5xl font-extrabold mb-2">
+                £1,250
+            </div>
+            <p class="mb-6 font-semibold">(One-Time Project Fee)</p>
+            
+            <div class="mt-4 p-4 bg-white/20 rounded-lg inline-block">
+                <h4 class="font-bold text-xl">PLUS, YOU'LL RECEIVE:</h4>
+                <ul class="list-none mt-2">
+                    <li>✓ **FREE** Logo Design (2 Mockups)</li>
+                    <li>✓ **FREE** 3 Months of Website Support & Maintenance</li>
+                </ul>
+            </div>
+            
+            <p class="mt-8 text-lg">Ready to transform your online presence?</p>
+            <p class="text-sm text-indigo-200">Let's discuss this further and get started.</p>
+            
+            <div class="mt-6">
+                <a href="mailto:your-email@example.com?subject=Website%20Rebuild%20for%20London%20Imperial%20Immigration%20Services" class="btn-primary inline-block">Yes, Let's Discuss The Project</a>
+            </div>
+        </section>
+
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Helper function to wrap long labels for Chart.js
+            function formatLabel(str, maxwidth){
+                const sections = [];
+                const words = str.split(" ");
+                let temp = "";
+
+                words.forEach(function(item, index){
+                    if(temp.length > 0) {
+                        constconcat = temp + ' ' + item;
+                    } else {
+                        constconcat = item;
+                    }
+                    
+                    if (constconcat.length > maxwidth){
+                        sections.push(temp);
+                        temp = "";
+                    }
+                    
+                    if (temp.length > 0) {
+                        temp += ' ' + item;
+                    } else {
+                        temp = item;
+                    }
+                });
+                sections.push(temp);
+                return sections;
+            }
+
+            // --- Chart.js Tooltip Configuration ---
+            const tooltipTitleCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // --- Traffic Source Doughnut Chart ---
+            const ctxTraffic = document.getElementById('trafficSourceChart').getContext('2d');
+            new Chart(ctxTraffic, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Organic Search', 'Direct', 'Referral', 'Social Media'],
+                    datasets: [{
+                        label: 'Projected Traffic Sources',
+                        data: [55, 20, 15, 10],
+                        backgroundColor: [
+                            '#36A2EB', // Blue
+                            '#4BC0C0', // Teal
+                            '#FFCE56', // Yellow
+                            '#9966FF'  // Purple
+                        ],
+                        borderColor: '#f3f4f6',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Projected Monthly Website Traffic Sources',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        tooltip: tooltipTitleCallback.plugins.tooltip
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
